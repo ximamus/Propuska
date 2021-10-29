@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1705
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Propusk", "Propusk\Propusk.csproj", "{B68D34EA-3D86-47E8-90A4-91245AC1AB13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{06D8E90E-A0E6-4214-BD22-00D47BB7ED9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B68D34EA-3D86-47E8-90A4-91245AC1AB13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68D34EA-3D86-47E8-90A4-91245AC1AB13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68D34EA-3D86-47E8-90A4-91245AC1AB13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68D34EA-3D86-47E8-90A4-91245AC1AB13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06D8E90E-A0E6-4214-BD22-00D47BB7ED9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D8E90E-A0E6-4214-BD22-00D47BB7ED9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D8E90E-A0E6-4214-BD22-00D47BB7ED9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D8E90E-A0E6-4214-BD22-00D47BB7ED9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D802707A-71DE-48D8-BA38-61FD580160ED}
+	EndGlobalSection
+EndGlobal
