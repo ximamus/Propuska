@@ -8,9 +8,9 @@ namespace Lib
 {
     public class Prop
     {
-        private int number;
+        public int number;
         public string fio;
-        private int type;
+        public int type;
         public DateTime data;
 
         public Prop(int number, string fio, int type, DateTime data)
@@ -26,16 +26,28 @@ namespace Lib
     {
         public List<Prop> Propuska = new List<Prop>();
 
-        public void Dobav(string name, int type) {
-            Propuska.Add(new Prop(Propuska.Count + 1, name, type, DateTime.Now));
+        public int CheckNumber() {
+            int number = 0;
+            foreach (Prop prop in Propuska) {
+                if (prop.number > number) {
+                    number = prop.number;
+                }
+            }
+            return number;
+        }
+
+        public void Dobav(int number, string name, int type) {
+            Propuska.Add(new Prop(number, name, type, DateTime.Now));
             Console.WriteLine("Пропуск введен\n" +
                 "Нажмите любую клавишу для продолжения");
             Console.ReadKey();
         }
 
         public void DelName(string nameDel) {
+            bool found = false;
             foreach (Prop prop in Propuska) {
                 if (prop.fio.Contains(nameDel)) {
+                    found = true;
                     Console.WriteLine($"Пропуск для {prop.fio} удален");
                     Propuska.Remove(prop);
                     Console.WriteLine("Нажмите любую клавишу для продолжения");
@@ -43,12 +55,17 @@ namespace Lib
                     break;
                 }
             }
+            if (!found) {
+                Console.WriteLine($"Фамилия {nameDel} не найдена\n" +
+                    "Нажмите любую клавишу для продолжения");
+                Console.ReadKey();
+            }
         }
 
         public DateTime LastDate {
-            get {
-                Prop lastData = Propuska.Last();
-                return lastData.data; 
+            get {                
+                    Prop lastData = Propuska.Last();
+                    return lastData.data;                
             }
         }
 
@@ -60,6 +77,6 @@ namespace Lib
                 }
             }            
             return amount;
-        }
+        }        
     }
 }

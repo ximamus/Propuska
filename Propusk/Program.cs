@@ -20,6 +20,7 @@ namespace Propusk
             "3. Дата последнего выданного пропуска\n" +
             "4. Пропуска за промежуток\n" +
             "5. Выход из программы";
+            int type = 0;            
 
             while (true) {
                 Console.Clear();
@@ -33,16 +34,23 @@ namespace Propusk
                             
                             Console.WriteLine("Введите ФИО");
                             string name = Console.ReadLine();
-                            Console.WriteLine("Введите тип пропуска: 1 - обычный, 2 - срочный, 3 - транзит");
-                            int type = Convert.ToInt32(Console.ReadLine());
+                            bool propType = false;                            
+                            while (!propType) {
+                                Console.WriteLine("Введите тип пропуска: 1 - обычный, 2 - срочный, 3 - транзит");
+                                type = Convert.ToInt32(Console.ReadLine());
+                                if (type == 1 || type == 2 || type == 3) {
+                                    propType = true;
+                                }
+                            }
+                            int number = props.CheckNumber();
                             Console.WriteLine("Данные верны?\n" +
-                                $"Номер пропуска: {props.Propuska.Count + 1}\n" +
+                                $"Номер пропуска: {number += 1}\n" +
                                 $"ФИО: {name}\n" +
                                 $"Тип пропуска: {type}\n" +
                                 $"Дата пропуска: {DateTime.Now}\n" +
                                 $"Введите y - да, n - нет");
                             if (Console.ReadLine().ToLower() == "y") {
-                                props.Dobav(name, type);                                
+                                props.Dobav(number, name, type);                                
                                 dataSet = true;                                
                             }                           
                         }
@@ -53,15 +61,44 @@ namespace Propusk
                         props.DelName(nameDel);
                         break;
                     case "3":
-                        Console.WriteLine($"Дата последнего выданного пропуска: {props.LastDate.ToString("d")}\n" +
+                        try {
+                            Console.WriteLine($"Дата последнего выданного пропуска: {props.LastDate.ToString("d")}\n" +
                             "Нажмите любую клавишу для продолжения");
+                        }
+                        catch {
+                            Console.WriteLine("Список пропусков пустой\n" +
+                                "Нажмите любую клавишу для продолжения");
+                        }                        
                         Console.ReadKey();
                         break;
                     case "4":
-                        Console.WriteLine("Введите первую дату в формате дд/мм/гггг");
-                        DateTime date1 = DateTime.Parse(Console.ReadLine());
-                        Console.WriteLine("Введите вторую дату в формате дд/мм/гггг");
-                        DateTime date2 = DateTime.Parse(Console.ReadLine());                        
+                        DateTime date1, date2;
+                        date1 = date2 = new DateTime();
+                        bool dateSet = false;                        
+                        while (!dateSet) {
+                            try
+                            {
+                                Console.WriteLine("Введите первую дату в формате дд/мм/гггг");
+                                date1 = DateTime.Parse(Console.ReadLine());
+                                Console.WriteLine("Введите вторую дату в формате дд/мм/гггг");
+                                date2 = DateTime.Parse(Console.ReadLine());
+                                if (date2 < date1)
+                                {
+                                    Console.WriteLine("Последняя дата меньше первой\n" +
+                                        "Нажмите любую клавишу для продолжения");
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    dateSet = true;
+                                }
+                            }
+                            catch {
+                                Console.WriteLine("Формат даты неверный, введите даты заново\n" +
+                                    "==========================================");
+                            }
+                        }                        
+                        
                         Console.WriteLine($"Количество пропусков, выданных между {date1.ToString("d")} и {date2.ToString("d")}: {props.Amount(date1, date2)}\n" +
                             "Нажмите любую клавишу для продолжения");
                         Console.ReadKey();
