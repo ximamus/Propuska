@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lib
-{
-    public class Prop
-    {
+{ 
+    public class Prop {
         public int number;
         public string fio;
         public int type;
@@ -22,8 +21,7 @@ namespace Lib
         }
     }
 
-    public class Props
-    {
+    public class Props {
         public List<Prop> Propuska = new List<Prop>();
 
         public int CheckNumber() {

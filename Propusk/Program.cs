@@ -7,10 +7,8 @@ using Lib;
 
 namespace Propusk
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {             
+    class Program {
+        static void Main(string[] args) {             
             Props props = new Props();
             string menu = "Программа работы с пропусками\n" +
             "=============================\n" +
@@ -92,8 +90,7 @@ namespace Propusk
                                 Console.WriteLine("Формат даты неверный, введите даты заново\n" +
                                     "==========================================");
                             }
-                        }                        
-                        
+                        }                                  
                         Console.WriteLine($"Количество пропусков, выданных между {date1.ToString("d")} и {date2.ToString("d")}: {props.Amount(date1, date2)}\n" +
                             "Нажмите любую клавишу для продолжения");
                         Console.ReadKey();
