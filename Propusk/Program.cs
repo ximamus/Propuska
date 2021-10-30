@@ -29,9 +29,7 @@ namespace Propusk
                 {
                     case "1":
                         bool dataSet = false;
-                        while (!dataSet)
-                        {   
-                            
+                        while (!dataSet) {                               
                             Console.WriteLine("Введите ФИО");
                             string name = Console.ReadLine();
                             bool propType = false;                            
@@ -76,20 +74,17 @@ namespace Propusk
                         date1 = date2 = new DateTime();
                         bool dateSet = false;                        
                         while (!dateSet) {
-                            try
-                            {
+                            try {
                                 Console.WriteLine("Введите первую дату в формате дд/мм/гггг");
                                 date1 = DateTime.Parse(Console.ReadLine());
                                 Console.WriteLine("Введите вторую дату в формате дд/мм/гггг");
                                 date2 = DateTime.Parse(Console.ReadLine());
-                                if (date2 < date1)
-                                {
+                                if (date2 < date1) {
                                     Console.WriteLine("Последняя дата меньше первой\n" +
                                         "Нажмите любую клавишу для продолжения");
                                     Console.ReadKey();
                                 }
-                                else
-                                {
+                                else {
                                     dateSet = true;
                                 }
                             }
